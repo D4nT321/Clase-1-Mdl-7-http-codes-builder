@@ -32,7 +32,7 @@ import org.springframework.http.HttpStatus;
 
 // Importa HttpStatusCode.
 // Representa códigos de estado HTTP (no se usa directamente aquí).
-import org.springframework.http.HttpStatusCode;
+
 
 // Importa ResponseEntity.
 // Se usa para construir respuestas HTTP completas (estado + cuerpo).
@@ -114,7 +114,9 @@ public class SampleController {
 
         // Se crea un objeto House usando el patrón Builder.
         // Solo se asigna la dirección.
-        var h1 = House.builder()
+     /*
+      */
+      var h1 = House.builder()
                 .address("Cra 1 # 2 -03")
                 .build();
 
@@ -127,7 +129,7 @@ public class SampleController {
                 .numWindows(4)
                 .color("Azul")
                 .haveGarage(true)
-                .build();
+              .build();
 
         // Ejemplo usando el constructor
         // h2 = new House("AZUL", 4, null, true);
@@ -139,6 +141,7 @@ public class SampleController {
         // Agrega el valor recibido en la petición a la lista
         list.add(entity);
 
+        
         // Devuelve una respuesta HTTP 201 (CREATED)
         // con la ubicación del nuevo recurso y el índice como cuerpo
         return ResponseEntity.created(URI.create("/api/sample/" + index))
