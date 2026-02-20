@@ -1,0 +1,47 @@
+###
+
+GET http://localhost:8080/api/users
+
+###
+
+POST  http://localhost:8080/api/users
+Content-Type: application/json
+
+ {
+    "userName1": "dante63",
+    "password1": "dante9",
+    "email1": "date00@email.com"
+  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
