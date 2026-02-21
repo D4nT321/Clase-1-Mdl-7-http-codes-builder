@@ -19,6 +19,8 @@ public interface UserService {
 
     Void delete(String username);
 
+    UserDto update(String username, UserRequest user);
+
 
     
 }

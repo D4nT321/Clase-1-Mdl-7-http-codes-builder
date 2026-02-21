@@ -2,8 +2,7 @@ package com.dante.httpcodes.controller;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +20,8 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/api/users")
@@ -51,6 +52,12 @@ public class UserController {
     @PostMapping
     public UserDto register(@Valid @RequestBody UserRequest user) {
         return userService.create(user);
+    }
+
+
+    @PutMapping("/{username}")
+    public UserDto update(@PathVariable String username, @RequestBody UserRequest user) {
+        return userService.update(username, user);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

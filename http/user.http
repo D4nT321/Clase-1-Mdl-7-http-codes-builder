@@ -1,12 +1,17 @@
 ###
+# CLAVE: Base64(<user>:<pass>)
 
+### control ship + p base64 Encode - Decode 
+
+# usuario
 GET http://localhost:8080/api/users
+Authorization: Basic user:password  
 
-###
-
+### 
+# admin 
 POST  http://localhost:8080/api/users
 Content-Type: application/json
-
+#Authorization: Basic YWRtaW46cGFzc3dvcmQ=
  {
     "userName1": "dante63",
     "password1": "dante9",
@@ -14,8 +19,28 @@ Content-Type: application/json
   
     }
 
+###
+#admin
+#guest
+#user
+PUT  http://localhost:8080/api/users/dante
+Content-Type: application/json
+Authorization: Basic YWRtaW49cGFzc3dvcmQ= 
+Authorization: Basic Z3Vlc3Q9cGFzc3dvcmQ=
+Authorization: Basic dXNlcnM9cGFzc3dvcmQ=
 
+{
+    "userName": "dantex",
+    "password": "dante100",
+    "email1": "datexcx@email.com"
+  
+    }
 
+###
+DELETE http://localhost:8080/api/users/dante
+Authorization: Basic YWRtaW49cGFzc3dvcmQ= 
+#Authorization: Basic Z3Vlc3Q9cGFzc3dvcmQ=
+#Authorization: Basic dXNlcnM9cGFzc3dvcmQ=
 
 
 

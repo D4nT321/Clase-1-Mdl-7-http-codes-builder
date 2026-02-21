@@ -85,6 +85,21 @@ public class MemoryUserService implements UserService {
         return newUser;
     }
 
+
+
+    @Override
+    public UserDto update(String username, UserRequest user) {
+        
+        var updateUser = getByUsername(username);
+        updateUser.setName(user.getName());
+        updateUser.setUserName(user.getUserName());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setPassword(user.getPassword());
+        
+        return updateUser;
+
+    }
+
     @Override
     public Void delete(String username) {
        var existing = getByUsername(username);

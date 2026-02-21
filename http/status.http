@@ -1,10 +1,13 @@
 ###
+# control e - control e decofica el password de base64
+# control e - control d para Encode
+# control e - control e para Decode
 GET http://localhost:8080/api/status
-
+Authorization: Basic dXNlcjpwYXNzd29yZA==
 ###
 POST http://localhost:8080/api/status
 Content-Type: application/json
-
+Authorization: Basic dXNlcj1wYXNzd29yZA==
 {
     "number": "2A"
 }
