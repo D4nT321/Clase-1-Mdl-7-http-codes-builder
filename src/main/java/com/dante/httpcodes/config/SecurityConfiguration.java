@@ -22,10 +22,12 @@ public class SecurityConfiguration {
         
         http
         .csrf(csrf -> csrf.disable())
+        .headers(headers -> headers.frameOptions(opt -> opt.disable()))
         .authorizeHttpRequests(authz -> authz
+            .requestMatchers("/h2-console/**").permitAll()
             .requestMatchers("/api/sample/**").permitAll() //401 sino las cumple
             .requestMatchers("/api/global/**").permitAll()
-            .requestMatchers(HttpMethod.POST,"/api/users/**").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.POST,"/api/users/**").hasRole("ADMIN") //.permitAll()//
             .requestMatchers(HttpMethod.PUT,"/api/users/**").hasAnyRole("ADMIN","USER")
             .requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
             .anyRequest().authenticated())
@@ -41,31 +43,31 @@ public class SecurityConfiguration {
     }
 
 
-    @Bean
-    public UserDetailsService userDetailsService() {
+   // @Bean
+    //public UserDetailsService userDetailsService() {
 
         //PasswordEncoder passwordEncoder = es para encriptar la contraseña
         // https://bcrypt-generator.com/
-        var user = User.builder()
-        .username("user")
-        .password("$2a$12$d.HuO18t5tGeSpEWVYGVVOO0gxudGBSBVZCV5KC9DdmZ06DQS9GOi")
-        .roles("USER")
-        .build();
+        //var user = User.builder()
+         //.username("user")
+        // .password("$2a$12$d.HuO18t5tGeSpEWVYGVVOO0gxudGBSBVZCV5KC9DdmZ06DQS9GOi")
+        // .roles("USER")
+        // .build();
 
-        var admin = User.builder()
-        .username("admin")
-        .password("$2a$12$nPNMAxyKQCJk8Myoe0xeLuLd3EwegyPd8QVdNqHDQQS6DvKCbGVWC")
-        .roles("USER", "ADMIN")
-        .build();
+        // var admin = User.builder()
+       //  .username("admin")
+       //  .password("$2a$12$nPNMAxyKQCJk8Myoe0xeLuLd3EwegyPd8QVdNqHDQQS6DvKCbGVWC")
+       //  .roles("USER", "ADMIN")
+       //  .build();
 
-        var guest = User.builder()
-        .username("guest")
-        .password("$2a$12$nPNMAxyKQCJk8Myoe0xeLuLd3EwegyPd8QVdNqHDQQS6DvKCbGVWC")
-        .roles("GUEST")
-        .build();
+      //   var guest = User.builder()
+       //  .username("guest")
+       //  .password("$2a$12$nPNMAxyKQCJk8Myoe0xeLuLd3EwegyPd8QVdNqHDQQS6DvKCbGVWC")
+       //  .roles("GUEST")
+       //  .build();
 
-        return new InMemoryUserDetailsManager(user, admin, guest);
+       //  return new InMemoryUserDetailsManager(user, admin, guest);
 
-    }
+    // }
 
 }

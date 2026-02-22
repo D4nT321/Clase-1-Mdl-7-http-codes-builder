@@ -19,6 +19,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -29,7 +30,10 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    //@Qualifer("dbUserService") es diferenciar el servicio que se va a usar - decir cual usar 
+    //@Qualifier("memoryUserService") es diferenciar el servicio que se va a usar
+    // public UserController(@Qualifier("dbUserService")UserService userService) {
+         public UserController(UserService userService) {
         this.userService = userService;
     }
 

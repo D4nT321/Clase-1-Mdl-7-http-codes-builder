@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.dante.httpcodes.dto.UserDto;
@@ -12,6 +13,9 @@ import com.dante.httpcodes.exception.AlreadyExistException;
 import com.dante.httpcodes.exception.MissingValueException;
 import com.dante.httpcodes.exception.UserNotFoudException;
 
+//import org.springframework.context.annotation.Primary;
+
+//@Primary //esta es una anotacion para diferenciarlos de los dos servicios
 @Service
 public class MemoryUserService implements UserService {
 

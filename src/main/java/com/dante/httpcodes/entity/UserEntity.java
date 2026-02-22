@@ -1,73 +1,72 @@
-package com.dante.httpcodes.dto;
+package com.dante.httpcodes.entity;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-import com.dante.httpcodes.entity.Role;
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+@Entity
+@Table(name = "users")
+public class UserEntity {
+     
 
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonIgnoreProperties({"active", "password"})
-public class UserDto {
-    
-    //JsonAlias para mapear los campos userName y username del json al campo userName de la clase
-    //@JsonAlias({"userName","username"})
-    //JsonProperty para mapear el campo user_name del json al campo userName de la clase
-    @JsonProperty(value="user_name", index = 0)
-    
+    @Id
+    @Column(name = "user_name", length = 20)
     private String userName;
 
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @JsonIgnore
+    @Column(nullable = false, length = 80)
     private String password;
 
-    @JsonAlias({"nombre","fullname"})
+     @Column(length = 100)
     private String name;
 
-    //@JsonIgnore 
-    @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
-    @JsonProperty("hire_date")
+    @Column(name = "hire_date")
     private LocalDate hirDate;
 
+    @CollectionTable(name = "user_roles")
     private Set<Role> roles;
 
 
+
     private Boolean active;
-  
-
-
-    
 
     // Getters y setters para cada campo.
+
     public String getUserName() {
         return userName;
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -83,9 +82,11 @@ public class UserDto {
     public Boolean getActive() {
         return active;
     }
+
     public void setActive(Boolean active) {
         this.active = active;
     }
+
 
     public Set<Role> getRoles() {
         return roles;
@@ -95,15 +96,6 @@ public class UserDto {
         this.roles = roles;
     }
 
-
-
-    @Override
-    public String toString() {
-        return "UserDto [userName=" + userName + ", email=" + email + ", password=" + password + ", name=" + name
-                + ", hireDate=" + hirDate + ",active=" + active + "]";
-    }
-   
-
-
     
+
 }

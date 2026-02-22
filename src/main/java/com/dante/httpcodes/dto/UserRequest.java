@@ -1,11 +1,16 @@
 package com.dante.httpcodes.dto;
 
+import java.util.Set;
+
+import com.dante.httpcodes.entity.Role;
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 
 public class UserRequest {
     
@@ -26,6 +31,9 @@ public class UserRequest {
 
     @JsonAlias({"nombre","fullname"})
     private String name;
+
+    @NotEmpty(message = "Los roles son obligatorios")
+    protected Set<Role> roles;
 
 
     // Getters y setters para cada campo.
@@ -60,6 +68,16 @@ public class UserRequest {
     public void setName(String name) {
         this.name = name;
     }
+
+     public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+   
 
     
 }

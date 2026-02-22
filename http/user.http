@@ -11,11 +11,15 @@ Authorization: Basic user:password
 # admin 
 POST  http://localhost:8080/api/users
 Content-Type: application/json
-#Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+#Authorization: Basic admin:password
  {
     "userName1": "dante63",
     "password1": "dante9",
-    "email1": "date00@email.com"
+    "email1": "date00@email.com",
+    "roles": [
+         "ROLE_ADMIN",
+         "ROLE_USER"
+    ]
   
     }
 
